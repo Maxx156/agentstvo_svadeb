@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>EventAura | Агентство свадеб и корпоративов</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: elegant modern sans & serif accent -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #1E2A32;
+            --charcoal: #2C3E40;
+            --gold: #C6A15B;
+            --gold-light: #E0C58F;
+            --cream: #FDF8F0;
+            --white: #FFFFFF;
+            --gray-light: #F5F3EF;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--dark);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Typography */
+        h1, h2, h3, .logo, .nav-links a, .hero-btn {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-subhead {
+            color: #5A6E7A;
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .accent-text {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Header / Nav */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: var(--shadow-sm);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--dark) 30%, var(--gold) 80%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .logo span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--gold);
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--charcoal);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(107deg, rgba(30,42,50,0.92) 0%, rgba(44,62,64,0.85) 100%), url('https://images.unsplash.com/photo-1511795409674-a2e83c0c7f23?w=1600&auto=format') center/cover no-repeat;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.9rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            box-shadow: 0 4px 12px rgba(198, 161, 91, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #b48b42;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--gold-light);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(198, 161, 91, 0.2);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* Services cards grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: 28px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(198, 161, 91, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gold-light);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #4a5b66;
+        }
+
+        /* double event highlight */
+        .double-callout {
+            background: var(--gray-light);
+            border-radius: 48px;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .callout-item {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .callout-item i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        /* Portfolio gallery */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .portfolio-item {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            background: white;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+
+        .portfolio-img {
+            height: 260px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.03);
+        }
+
+        .portfolio-info {
+            padding: 1rem 1.2rem 1.3rem;
+        }
+
+        .portfolio-info h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .portfolio-info p {
+            color: var(--gold);
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            padding: 1.8rem;
+            border-radius: 32px;
+            transition: var(--transition);
+            border-left: 5px solid var(--gold);
+        }
+
+        .testimonial-card i {
+            color: var(--gold);
+            font-size: 2rem;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #2C3E40;
+        }
+
+        .client-name {
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        /* contact form */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--white);
+            border-radius: 40px;
+            box-shadow: var(--shadow-sm);
+            padding: 2rem;
+            border: 1px solid #eee;
+        }
+
+        .contact-info {
+            background: var(--gray-light);
+            border-radius: 28px;
+            padding: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-details {
+            margin: 2rem 0;
+        }
+
+        .contact-details p {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .contact-details i {
+            width: 32px;
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border-radius: 28px;
+            border: 1px solid #ddd;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            background: #fefefe;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(198,161,91,0.2);
+        }
+
+        textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--gold);
+            border: none;
+            color: var(--dark);
+            font-weight: 700;
+            padding: 0.9rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: #b48b42;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--dark);
+            color: #cbd5e1;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+        /* scroll margin for fixed header */
+        section {
+            scroll-margin-top: 90px;
+        }
+
+        /* responsive */
+        @media (max-width: 850px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 1.9rem;
+            }
+            section {
+                padding: 3rem 0;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* fade up animation on scroll (simple) */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <div class="logo">
+            <h1>EVENT AURA</h1>
+            <span>свадьбы & корпоративы</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#testimonials">Отзывы</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Свадьбы мечты <br>и корпоративы премиум-класса</h1>
+            <p>Полное событийное агентство: от концепции до воплощения. Более 300 идеальных праздников.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn-primary">Обсудить событие</a>
+                <a href="#portfolio" class="btn-secondary">Наши работы</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / double expertise -->
+    <section class="container" style="padding-top: 2rem;">
+        <div class="double-callout fade-up">
+            <div class="callout-item">
+                <i class="fas fa-ring"></i>
+                <h3>Свадебное агентство</h3>
+                <p>Романтика, стиль, индивидуальный сценарий — создаём дни, которые остаются в сердцах навсегда.</p>
+            </div>
+            <div class="callout-item">
+                <i class="fas fa-champagne-glasses"></i>
+                <h3>Корпоративные события</h3>
+                <p>Тимбилдинги, юбилеи компании, новогодние вечеринки: креатив и безупречная организация.</p>
+            </div>
+            <div class="callout-item">
+                <i class="fas fa-handshake"></i>
+                <h3>Полный цикл</h3>
+                <p>Подбор площадок, декор, кейтеринг, ведущие, фото/видео — всё под ключ.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services section -->
+    <section id="services" class="container">
+        <div style="text-align: center;">
+            <h2 class="fade-up">Что мы предлагаем</h2>
+            <p class="section-subhead fade-up">Изысканные свадьбы, яркие корпоративы и мероприятия любого масштаба</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-up">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Планирование свадьбы</h3>
+                <p>Полное сопровождение, контроль бюджета, работа с подрядчиками — вы наслаждаетесь моментом.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-building"></i>
+                <h3>Корпоративные вечеринки</h3>
+                <p>Фирменный стиль, анимация, шоу-программа: запоминающиеся события для сотрудников и партнёров.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-leaf"></i>
+                <h3>Оформление и декор</h3>
+                <p>Цветочные композиции, фотозоны, световой дизайн — атмосфера, от которой захватывает дух.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-chalkboard-user"></i>
+                <h3>Ведущие & артисты</h3>
+                <p>Топ-ведущие, кавер-бэнды, интерактивы — шоу, которое держит в тонусе всех гостей.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-utensils"></i>
+                <h3>Кейтеринг и банкет</h3>
+                <p>Фуршет, банкет, авторское меню от шеф-поваров. Учитываем любые пожелания и диеты.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-camera"></i>
+                <h3>Фото/видео продакшн</h3>
+                <p>Команда профессионалов снимет love story, клип или корпоративный фильм.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio section -->
+    <section id="portfolio" style="background-color: var(--gray-light);">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="fade-up">Реализованные проекты</h2>
+                <p class="section-subhead fade-up">Вдохновляйтесь нашими работами — свадьбы и корпоративы, которые вызывают восторг</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-up">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&auto=format');"></div>
+                    <div class="portfolio-info">
+                        <h4>Богемная свадьба в шато</h4>
+                        <p>Свадьба | 150 гостей</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-up">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&auto=format');"></div>
+                    <div class="portfolio-info">
+                        <h4>Новогодний корпоратив IT-компании</h4>
+                        <p>Корпоратив | 300+ гостей</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-up">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format');"></div>
+                    <div class="portfolio-info">
+                        <h4>Свадебный уикенд на природе</h4>
+                        <p>Свадьба | лаундж-формат</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-up">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?w=600&auto=format');"></div>
+                    <div class="portfolio-info">
+                        <h4>Юбилей банка: гала-вечер</h4>
+                        <p>Корпоратив | VIP-мероприятие</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-up">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format');"></div>
+                    <div class="portfolio-info">
+                        <h4>Свадьба в стиле ар-деко</h4>
+                        <p>Свадьба | 120 гостей</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-up">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600&auto=format');"></div>
+                    <div class="portfolio-info">
+                        <h4>Тимбилдинг на 200 участников</h4>
+                        <p>Корпоратив | активный формат</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="container">
+        <div style="text-align: center;">
+            <h2 class="fade-up">Наши пары и клиенты говорят</h2>
+            <p class="section-subhead fade-up">Доверие и эмоции — лучшая награда</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card fade-up">
+                <i class="fas fa-quote-left"></i>
+                <p>"Организовали нашу свадьбу просто безупречно! Учли каждую деталь, помогли с декором и даже с погодой повезло) Спасибо команде Event Aura за лучший день!"</p>
+                <div class="client-name">— Анна & Дмитрий</div>
+                <div style="font-size: 0.8rem; color: var(--gold);">Свадьба, 2024</div>
+            </div>
+            <div class="testimonial-card fade-up">
+                <i class="fas fa-quote-left"></i>
+                <p>"Провели юбилей компании на 5+. Все гости в восторге, программа была уникальной. Профессионалы своего дела, рекомендуем!"</p>
+                <div class="client-name">— Елена С., HR-директор</div>
+                <div style="font-size: 0.8rem; color: var(--gold);">Корпоратив</div>
+            </div>
+            <div class="testimonial-card fade-up">
+                <i class="fas fa-quote-left"></i>
+                <p>"Искали агентство, которое понимает и свадебную романтику, и деловой стиль. Event Aura справились с двумя мероприятиями за сезон! Очень довольны."</p>
+                <div class="client-name">— Мария & Алексей</div>
+                <div style="font-size: 0.8rem; color: var(--gold);">Свадьба + Корпоратив</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form + Info -->
+    <section id="contact" class="container" style="padding-bottom: 4rem;">
+        <div style="text-align: center;">
+            <h2 class="fade-up">Начните планировать ваш праздник</h2>
+            <p class="section-subhead fade-up">Оставьте заявку, и наш менеджер подготовит персональное предложение в течение 24 часов</p>
+        </div>
+        <div class="contact-wrapper fade-up">
+            <div class="contact-info">
+                <h3>Свяжитесь с нами</h3>
+                <p>Мы работаем по всей России и за рубежом. Сделаем ваше событие уникальным.</p>
+                <div class="contact-details">
+                    <p><i class="fas fa-phone-alt"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> welcome@eventaura.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Тверская, 16, бизнес-центр «Аура»</p>
+                    <p><i class="fab fa-instagram"></i> @eventaura_events</p>
+                </div>
+                <div style="margin-top: 1rem; font-size: 0.9rem;"><i class="fas fa-clock"></i> Пн–Пт: 10:00 – 20:00, сб по записи</div>
+            </div>
+            <div>
+                <form id="eventForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Ваше имя *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="Телефон *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <select id="eventType">
+                            <option value="wedding">Свадьба</option>
+                            <option value="corporate">Корпоратив</option>
+                            <option value="both">Свадьба + Корпоратив (два события)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="eventDate" placeholder="Желаемая дата (ориентир)">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="3" id="message" placeholder="Ваши пожелания, количество гостей, бюджет..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить заявку <i class="fas fa-arrow-right"></i></button>
+                    <p style="font-size: 0.75rem; margin-top: 1rem; text-align: center;">Нажимая на кнопку, вы соглашаетесь с политикой обработки данных</p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2025 EVENT AURA — агентство премиальных свадеб и корпоративных событий.</p>
+        <p style="margin-top: 0.5rem;">Создаём эмоции, которые остаются навсегда <i class="fas fa-heart" style="color: var(--gold);"></i></p>
+    </div>
+</footer>
+
+<script>
+    // Smooth scroll for anchor links + active class highlight (basic)
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Form submission with alert and simple validation
+    const form = document.getElementById('eventForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        if (!name || !phone) {
+            alert('Пожалуйста, заполните имя и номер телефона');
+            return;
+        }
+        // имитация отправки
+        alert(`Спасибо, ${name}! Ваша заявка принята. Наш специалист свяжется с вами в ближайшее время.`);
+        form.reset();
+    });
+
+    // Intersection Observer for fade-up animation
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // once visible
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    // for immediate visibility if already in view
+    window.addEventListener('load', () => {
+        fadeElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                el.classList.add('visible');
+                observer.unobserve(el);
+            }
+        });
+    });
+</script>
+</body>
+</html>
